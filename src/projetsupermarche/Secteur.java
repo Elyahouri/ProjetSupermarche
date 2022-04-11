@@ -4,6 +4,8 @@
  */
 package projetsupermarche;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author elyah
@@ -11,11 +13,34 @@ package projetsupermarche;
 public class Secteur {
     private int idSecteur;
     private String nomSecteur;
+    private ArrayList<Rayon> lesRayons;
     
     public Secteur(int unId,String unNom){
         idSecteur=unId;
         nomSecteur=unNom;
+        lesRayons=new ArrayList<>();
     
+    }
+
+    /**
+     * @return the idSecteur
+     */
+    public int getIdSecteur() {
+        return idSecteur;
+    }
+
+    /**
+     * @return the nomSecteur
+     */
+    public String getNomSecteur() {
+        return nomSecteur;
+    }
+
+    /**
+     * @return the lesRayons
+     */
+    public ArrayList<Rayon> getLesRayons() {
+        return lesRayons;
     }
     
 }
