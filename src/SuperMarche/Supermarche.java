@@ -38,7 +38,7 @@ public class Supermarche {
         Employe emp6 = new Employe(6,"Paul");
         
         //Les objets de type Travailler
-        Travailler trav1 = new Travailler(emp1,4);
+        Travailler trav1 = new Travailler(emp1,4);//4  12  16  18  24  29  33 36  45 47  52
         Travailler trav2 = new Travailler(emp2,8);
         Travailler trav3 = new Travailler(emp3,4);
         Travailler trav4 = new Travailler(emp4,2);
@@ -100,11 +100,46 @@ public class Supermarche {
                         }
                     
                     }
-                    
+                    break;
                     
                 case 2:
+                    int temps=0;
+                    System.out.println("Quel est l'ID de l'employé ?");
+                    int idEmploye;
+                    idEmploye = sc.nextInt();
+                    for(Secteur s : lesSecteurs){
+                        for(Rayon r : s.getLesRayons()){
+                            for(Travailler t : r.getLesTravailler()){
+                                if(idEmploye == t.getUnEmploye().getIdEmploye()){
+                                    temps = temps + t.getTempsPasse();
+                                }
+                            }
+                        }                   
+                    }
+                    System.out.println("Cet employé a un temps de travail de "+temps+"H");
+                    break;
                     
                 case 3:
+                    int totalTemps = 0;
+                    //Liste regroupant tous les employés
+                    ArrayList<Employe> lesEmployes = new ArrayList<Employe>();
+                    for(Secteur s : lesSecteurs){
+                        for(Rayon r : s.getLesRayons()){
+                            for(Travailler t : r.getLesTravailler()){
+                                totalTemps += t.getTempsPasse();
+                                //Si l'employé est déjà dans la liste lesEmployes on ne fait rien
+                                if(lesEmployes.contains(t.getUnEmploye())){
+                                }
+                                //Sinon on l'ajoute   
+                                else{
+                                    lesEmployes.add(t.getUnEmploye());
+                                }
+                            }
+                        }
+                    }
+                    int nbEmployes = lesEmployes.size();//Récupération du nombre d'employés
+                    System.out.println("La moyenne de temps de travail par employé est de "+totalTemps/nbEmployes+"H");
+                    break;
                     
                 case 0:
                     System.out.println("FIN DU PROGRAME");
